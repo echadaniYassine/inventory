@@ -1,0 +1,20 @@
+{
+  "name": "yassine/inventory-system",
+  "description": "A mini inventory management system built with native PHP",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Echadani Yassine"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "vlucas/phpdotenv": "*"
+  }
+}
