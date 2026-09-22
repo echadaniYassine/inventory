@@ -2,20 +2,56 @@
 
 require_once __DIR__ . '/../config/bootstrap.php';
 
-use App\Services\ProductService;
-use App\Services\CategoryService;
-use App\Services\InventoryService;
+use App\Http\Response;
 
+$response = new Response(
+    json_encode([
+        'message' => 'Product created successfully',
+        'id' => 1
+    ]),
+    201,
+    [
+        'Content-Type' => 'application/json'
+    ]
+);
+
+$response->send();
+
+use App\Http\Request;
+
+$request = Request::capture();
+
+echo '<pre>';
+
+echo "Method: ";
+print_r($request->method());
+
+echo "\nURI: ";
+print_r($request->uri());
+
+echo "\nPath: ";
+print_r($request->path());
+
+echo "\nQuery: ";
+print_r($request->query());
+
+echo "\nBody: ";
+print_r($request->body());
+
+echo "\nHeaders: ";
+print_r($request->headers());
+
+echo '</pre>';
 // Initialize the container and get the ProductService instance
-$container = require __DIR__ . '/../config/container.php';
+// $container = require __DIR__ . '/../config/container.php';
 
-$inventoryService = $container->get(InventoryService::class);
-$categoryService = $container->get(CategoryService::class);
-$productService = $container->get(ProductService::class);
+// $inventoryService = $container->get(InventoryService::class);
+// $categoryService = $container->get(CategoryService::class);
+// $productService = $container->get(ProductService::class);
 
-$inventoryService->addStock(1, 100);
-$product = $productService->getProductById(1);
-echo $product->getInfo();
+// $inventoryService->addStock(1, 100);
+// $product = $productService->getProductById(1);
+// echo $product->getInfo();
 
 
 
